@@ -5,14 +5,20 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     public float spd = 5.0f;
-    Vector3 direct = Vector3.up;
+    Vector3 direct = Vector3.down;
+
+    public GameObject prefabsExplosion;
 
     private void Update()
     {
-
+        transform.position = transform.position + direct * spd * Time.deltaTime;
     }
          private void OnCollisionEnter(Collision collision)
     {
+
+        GameObject explosion0bj = Instantiate(prefabsExplosion);
+        explosion0bj.transform.position = transform.position;
+
         Destroy(collision.gameObject);
 
         Destroy(gameObject);
