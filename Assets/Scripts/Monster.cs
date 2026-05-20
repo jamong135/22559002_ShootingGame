@@ -15,24 +15,10 @@ public class Monster : MonoBehaviour
     }
          private void OnCollisionEnter(Collision collision)
     {
-        //충돌하는 Collision의 GameObject의 Tag 명이 "Bullet"이라면...
-        if(collision.gameObject.tag == "Bullet")
-        {
-            GameObject gameManager = GameObject.Find("GameManager");
-            ScoreManager scoreManager = gameManager.GetComponent<ScoreManager>();
-            scoreManager.nowScore++;
-            scoreManager.nowScoreUI.text = "Now Score : " + scoreManager.nowScore;
+        GameObject explosion0bi = Instantiate(prefabsExplosion);
+        explosion0bi.transform.position = transform.position;
 
-            
-
-            GameObject explosion0bj = Instantiate(prefabsExplosion);
-            explosion0bj.transform.position = transform.position;
-
-            Destroy(collision.gameObject);
-
-            Destroy(gameObject);
-        }
-
-
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
 }

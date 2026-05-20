@@ -10,7 +10,7 @@ public class BulletFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isfire = Input.GetButtonDown("Jump");
+        bool isfire = Input.GetButtonDown("Fire1");
         if (isfire)
         {
             GameObject bullet = Instantiate(bulletObject);
